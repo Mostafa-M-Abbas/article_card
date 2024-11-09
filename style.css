@@ -1,0 +1,193 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+
+:root {
+            --very-dark-grayish-blue: hsl(217, 19%, 35%);
+            --desaturated-dark-blue: hsl(214, 17%, 51%);
+            --grayish-blue: hsl(212, 23%, 69%);
+            --light-grayish-blue: hsl(210, 46%, 95%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: var(--light-grayish-blue);
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            padding: 1rem;
+        }
+
+        .article-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            max-width: 730px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .article-container {
+            display: grid;
+            grid-template-columns: 1fr;
+        }
+
+        .article-image {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .article-content {
+            padding: 2rem;
+        }
+
+        .article-title {
+            color: var(--very-dark-grayish-blue);
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .article-text {
+            color: var(--desaturated-dark-blue);
+            font-size: 0.8125rem;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+        }
+
+        .article-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-image {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        .author-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .author-name {
+            color: var(--very-dark-grayish-blue);
+            font-weight: 700;
+            font-size: 0.8125rem;
+        }
+
+        .article-date {
+            color: var(--grayish-blue);
+            font-size: 0.8125rem;
+        }
+
+        .share-button {
+            background: var(--light-grayish-blue);
+            border: none;
+            padding: 0.5rem;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .share-button.active {
+            background: var(--desaturated-dark-blue);
+        }
+
+        .share-button.active svg path {
+            fill: white;
+        }
+
+        .share-popup {
+            position: absolute;
+            background: var(--very-dark-grayish-blue);
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            visibility: hidden;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .share-popup.active {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .share-text {
+            color: var(--grayish-blue);
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            font-size: 0.8125rem;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-icons button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .social-icons button:hover {
+            transform: scale(1.1);
+        }
+
+        @media (min-width: 768px) {
+            .article-container {
+                grid-template-columns: 285px 1fr;
+            }
+
+            .article-image {
+                height: 100%;
+            }
+
+            .share-popup {
+                bottom: 120%;
+                right: -70px;
+            }
+
+            .share-popup::after {
+                content: '';
+                position: absolute;
+                bottom: -8px;
+                right: 85px;
+                border-left: 8px solid transparent;
+                border-right: 8px solid transparent;
+                border-top: 8px solid var(--very-dark-grayish-blue);
+            }
+        }
+
+        @media (max-width: 767px) {
+            .share-popup {
+                left: 0;
+                right: 0;
+                bottom: -80px;
+                border-radius: 0;
+                padding: 1.5rem 2rem;
+                justify-content: center;
+            }
+        }
